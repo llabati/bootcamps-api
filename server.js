@@ -1,14 +1,15 @@
 const express = require('express')
 const dotenv = require('dotenv')
 
+// Routes
+const bootcamps = require('./routes/bootcamps.js')
+
 dotenv.config({ path: './config/config.env' })
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.write('<h1>Hello there!</h1>')
-    res.end()
-})
+// Mount routers (to reduce length of the URI on routers)
+app.use('/bootcamps', bootcamps)
 
 const PORT = process.env.PORT || 5000
 
